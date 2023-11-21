@@ -1,3 +1,5 @@
+using AulasPOO.Model;
+
 namespace TestAulasPOO
 {
     [TestClass]
@@ -7,6 +9,11 @@ namespace TestAulasPOO
         public void TestaConstrutorDefaultCliente()
         {
             //este código verifica a criação de instancias da classe cliente pelo contrutor default
+            //cenario
+            var cliente = new Cliente();
+            //ação e teste
+            Assert.IsInstanceOfType(cliente, Cliente);
+
         }
 
         [TestMethod]
@@ -14,5 +21,6 @@ namespace TestAulasPOO
         {
             //este código verifica a criação de instancias da classe cliente informando o seu nome
         }
+
     }
 }
