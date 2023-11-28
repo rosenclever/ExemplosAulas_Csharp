@@ -12,6 +12,7 @@ namespace AulasPOO.Model
     {
         private long _numero;
         private decimal _saldo;
+        private Cliente _titular;
         public long Numero {
             get
             {
@@ -41,6 +42,16 @@ namespace AulasPOO.Model
         public Conta()
         {
 
+        }
+        public Cliente Titular {
+            get
+            {
+                return _titular;
+            }
+            set
+            {
+                _titular = value;
+            } 
         }
     }
 }

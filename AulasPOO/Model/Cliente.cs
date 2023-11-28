@@ -11,6 +11,7 @@ namespace AulasPOO.Model
         //complemente a classe cliente conforme solicitado em program
 
         private string _nome;
+        private string _cpf;
         public string Nome {
             get
             {
@@ -26,8 +27,17 @@ namespace AulasPOO.Model
             _nome = nome;
         }
 
+        public Cliente(string nome, string cpf)
+        {
+            if (cpf.Length != 11)
+                throw new ArgumentOutOfRangeException("CPF deve ter 11 digitos");
+            _nome = nome;
+            _cpf = cpf;
+        }
+        
         public Cliente()
         {
+
         }
     }
 }

@@ -18,3 +18,10 @@ var conta1 = new Conta(123456, 1000.99m);
 //conta1.Numero = 123456;
 //conta1.Saldo = 1000.99m;
 Console.WriteLine($"Conta {conta1.Numero} com saldo {conta1.Saldo}");
+
+var cliente1 = new Cliente("Fulano", "12345678901");
+
+conta1.Titular = cliente1;
+
+Console.WriteLine($"Conta {conta1.Numero} pertence a {conta1.Titular.Nome}");
+
