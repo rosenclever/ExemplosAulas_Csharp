@@ -22,7 +22,7 @@ namespace TestAulasPOO
             conta1.Deposito(1000);
 
             //teste
-            Assert.Equals(2000, conta1.Saldo);
+            Assert.AreEqual(2000, conta1.Saldo);
         }
         [TestMethod]
         public void TestaSaqueDentroDoSaldo()
@@ -36,7 +36,42 @@ namespace TestAulasPOO
             conta1.Saque(500);
 
             //teste
-            Assert.Equals(500, conta1.Saldo);
+            Assert.AreEqual(500, conta1.Saldo);
+        }
+        [TestMethod]
+        public void SaqueMaiorQueSaldoLancaArgumentOutOfRangeException()
+        {
+            //cenario
+            decimal saldoInical = 1000;
+            long numero = 1234;
+            var conta1 = new Conta(numero, saldoInical);
+
+            //acao e teste
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => conta1.Saque(1500));
+        }
+        [TestMethod]
+        public void TestaTransferencia()
+        {
+            //cenario
+            decimal saldoInical = 1000, valorTransferencia = 500;
+            long numero = 1234, numero2 = 4321;
+            var origem = new Conta(numero, saldoInical);
+            var destino = new Conta(numero2, saldoInical);
+
+            //acao
+            origem.Transfere(destino, valorTransferencia);
+
+            //
+            Assert.AreEqual(500, origem.Saldo);
+            Assert.AreEqual(1500, destino.Saldo);
+        }
+        [TestMethod]
+        public void TestaSubclasseConta()
+        {
+            //cenario e Ação
+            bool ehSubclasse = typeof(ContaCorrente).IsSubclassOf(typeof(Conta));
+            //teste
+            Assert.IsTrue(ehSubclasse);
         }
 
         //A.T.C.

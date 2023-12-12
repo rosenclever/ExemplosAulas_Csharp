@@ -53,5 +53,26 @@ namespace AulasPOO.Model
                 _titular = value;
             } 
         }
+        public void Deposito(decimal valor)
+        {
+            Saldo += valor;
+
+        }
+        public bool Saque(decimal valor)
+        {
+            if(valor > Saldo)
+            {
+                throw new ArgumentOutOfRangeException("Valor excede saldo disponível");
+            }
+            Saldo -= valor;
+            return true;
+        }
+        public void Transfere(Conta destino, decimal valor)
+        {
+            // como controlar a transacao para que o saque somente seja efetivado
+            // com o deposito confirmado
+            if (Saque(valor))
+                destino.Deposito(valor);
+        }
     }
 }
