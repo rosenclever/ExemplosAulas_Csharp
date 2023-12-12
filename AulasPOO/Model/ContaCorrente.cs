@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace AulasPOO.Model
 {
-    public class ContaCorrente
+    public class ContaCorrente : Conta
     {
+        public decimal Limite { get; set; }
+        public override bool Saque(decimal valor)
+        {
+            if (valor > Saldo + Limite)
+            {
+                throw new ArgumentOutOfRangeException("Valor excede saldo disponível");
+            }
+            Saldo -= valor;
+            return true;
+        }
     }
 }

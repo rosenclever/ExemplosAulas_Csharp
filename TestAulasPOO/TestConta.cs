@@ -73,6 +73,20 @@ namespace TestAulasPOO
             //teste
             Assert.IsTrue(ehSubclasse);
         }
+        [TestMethod]
+        public void TestaSaqueUsandoLimite()
+        {
+            //cenario
+            ContaCorrente conta1 = new ContaCorrente();
+            conta1.Deposito(1000);
+            conta1.Limite = 1000;
+
+            //acao
+            conta1.Saque(1100);
+
+            //teste
+            Assert.AreEqual(-100, conta1.Saldo);
+        }
 
         //A.T.C.
         // Quanto houver tentativa de saque que seja maior que o saldo disponível,

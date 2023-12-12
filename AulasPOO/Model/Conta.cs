@@ -28,7 +28,7 @@ namespace AulasPOO.Model
             {
                 return _saldo;
             }
-            private set
+            protected set
             {
                 _saldo = value;
             }
@@ -58,7 +58,7 @@ namespace AulasPOO.Model
             Saldo += valor;
 
         }
-        public bool Saque(decimal valor)
+        public virtual bool Saque(decimal valor)
         {
             if(valor > Saldo)
             {
